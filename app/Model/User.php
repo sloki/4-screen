@@ -4,6 +4,7 @@ namespace App\Model;
 
 
 use App\Core\BaseModel;
+use App\Helpers\Database;
 
 class User extends BaseModel
 {
@@ -41,5 +42,22 @@ class User extends BaseModel
         }
 
         return false;
+    }
+
+    public static function search($term): array
+    {
+        $db = Database::getInstance();
+        $data = [];
+
+        $params = [':email'=> '%' . $term . '%', ':name' => '%' . $term . '%'];
+        if ($db->query("SELECT * FROM `users` WHERE `email` LIKE :email OR `name` LIKE :name", $params)->error()) {
+            return $data;
+        }
+
+        if (count($db->results()) > 0) {
+            $data = $db->results();
+        }
+
+        return $data;
     }
 }

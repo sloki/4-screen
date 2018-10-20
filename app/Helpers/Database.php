@@ -135,7 +135,7 @@ class Database
             foreach ($fields as $key => $value) {
                 $params[":{$key}"] = $value;
                 $set .= "`{$key}` = :$key";
-                if ($tmp < count($fields)) {
+                if ($tmp < \count($fields)) {
                     $set .= ", ";
                 }
                 $tmp++;

@@ -4,12 +4,16 @@ namespace App\Helpers;
 
 class Auth
 {
-    public static function isAuthenticated($redirect = 'login')
+    public static function isAuthenticated($redirect = 'login', $flash = false)
     {
         Session::init();
         if (!Session::exists(Config::get('SESSION_USER'))) {
-            Session::destroy();
-            header('Location: ' . APP_URL . $redirect);
+            if(!empty($flash)) {
+                Flash::info($flash);
+            } else {
+                Session::destroy();
+                header('Location: ' . APP_URL . $redirect);
+            }
         }
     }
 

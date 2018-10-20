@@ -3,7 +3,7 @@
         <div class="col-md-offset-4 col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title text-center">Search</h3>
+                    <h3 class="panel-title text-center"><?= $this->welcome ?></h3>
                 </div>
                 <div class="panel-body">
                     <form action="<?= $this->makeUrl("home/search"); ?>" method="post">

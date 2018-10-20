@@ -32,4 +32,14 @@ class User extends BaseModel
 
         return false;
     }
+
+    public static function findUser($id)
+    {
+        $user = new self();
+        if ($user->find("users", ['id', "=", $id])->exists()) {
+            return $user;
+        }
+
+        return false;
+    }
 }

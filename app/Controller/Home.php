@@ -2,16 +2,32 @@
 
 namespace App\Controller;
 
+use App\Helpers\Auth;
+use App\Helpers\Config;
+use App\Helpers\Session;
 use App\Main\BaseController;
+use App\Model\User;
 
 class Home extends BaseController
 {
     public function index()
     {
+        Auth::isAuthenticated('login');
+
+        $userId = Session::get(Config::get('SESSION_USER'));
+        $user = User::findUser($userId);
+        $userData = $user->data();
+
         $this->view->addCss(['css/app.css']);
         $this->view->addJS(['js/app.js']);
         $this->view->render('home/index', [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'welcome' => 'Welcome, ' . $userData->name . ' !'
         ]);
+    }
+
+    public function search()
+    {
+
     }
 }

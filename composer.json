@@ -1,0 +1,15 @@
+{
+    "name": "sloki/test",
+    "description": "Test project",
+    "type": "project",
+    "license": "sloki",
+    "authors": [
+        {
+            "name": "Slobodan Milosevic",
+            "email": "sloki22@gmail.com"
+        }
+    ],
+    "require": {
+      "php": ">=7.0.0"
+    }
+}

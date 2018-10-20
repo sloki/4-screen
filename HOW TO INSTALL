@@ -1,0 +1,5 @@
+How to install:
+
+1) Change database parameters in config.php
+2) Run sql from database folder
+3) Run composer install

@@ -9,9 +9,9 @@
                     <form action="<?= $this->makeUrl("home/search"); ?>" method="post">
                         <div class="form-group">
                             <label for="email-input">Text <span class="text-danger">*</span></label>
-                            <input type="text" id="email-input" class="form-control" name="term" />
+                            <input type="text" id="email-input" class="form-control" name="term"/>
                         </div>
-                        <input type="hidden" name="csrf_token" value="<?= \App\Helpers\Token::generate(); ?>" />
+                        <input type="hidden" name="csrf_token" value="<?= \App\Helpers\Token::generate(); ?>"/>
                         <button type="submit" class="btn btn-primary">Search</button>
                         <a href="<?= $this->makeUrl("login/logout"); ?>" class="btn btn-link">Logout</a>
                     </form>
@@ -20,3 +20,32 @@
         </div>
     </div>
 </div>
+<?php
+if (!empty($this->data)) {
+    ?>
+    <br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        foreach ($this->data as $res) {
+            ?>
+
+            <tr>
+                <td><?= $res->name ?></td>
+                <td><?= $res->email ?></td>
+            </tr>
+
+            <?php
+        }
+        ?>
+        </tbody>
+    </table>
+    <?php
+}
+?>

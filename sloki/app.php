@@ -1,4 +1,4 @@
 <?php
 
 // return main application
-return new \App\main\Application();
+return new \App\Main\Application();

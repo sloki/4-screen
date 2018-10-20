@@ -56,7 +56,7 @@ class Validate
     {
         foreach ($rules as $rule => $ruleValue) {
             if (($rule === "required" && $ruleValue === true) && empty($value)) {
-                $this->addError($input, $input . 'is required!');
+                $this->addError($input, $input . ' is required!');
             } elseif (!empty($value)) {
                 $methodName = lcfirst(strtolower(str_replace(["-", "_"], "", $rule))) . "Rule";
                 if (method_exists($this, $methodName)) {
@@ -103,7 +103,7 @@ class Validate
     protected function requiredRule($input, $value, $ruleValue)
     {
         if ($ruleValue === true && empty($value)) {
-            $this->addError($input, $input . ' is required!');
+            $this->addError($input, $input . '  is required!');
         }
     }
 

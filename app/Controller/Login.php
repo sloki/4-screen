@@ -37,7 +37,7 @@ class Login extends BaseController
         Auth::isAuthenticated();
 
         if (\App\Helpers\User::logout()) {
-            header('Location: ' . APP_URL . 'login');
+            header('Location: ' . APP_URL);
             dd();
         }
 

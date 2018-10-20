@@ -5,7 +5,7 @@ namespace App\Main;
 use ReflectionClass;
 use ReflectionMethod;
 
-class Application
+class App
 {
     private $controller = CONTROLLER_PATH . 'Index';
     private $action = 'index';
@@ -54,12 +54,12 @@ class Application
             unset($this->params[1]);
         }
 
-        // Check to ensure the requested controller method exists.
+        // Check to ensure the requested controller method exists
         if (!(new ReflectionClass($this->controller))->hasMethod($this->action)) {
             throw new \Exception('The controller action ' . $this->action . ' does not exist!');
         }
 
-        // Check to ensure the requested controller method is pubic.
+        // Check to ensure the requested controller method is pubic
         if (!(new ReflectionMethod($this->controller, $this->action))->isPublic()) {
             throw new \Exception('The controller action ' . $this->action . ' is not accessible!');
         }
@@ -79,8 +79,16 @@ class Application
             $this->params = explode("/", filter_var(rtrim($url, "/"), FILTER_SANITIZE_URL));
         }
 
+        if(empty($this->params[0])) {
+            unset($this->params[0]);
+
+            $this->params = array_values($this->params);
+        }
+
         $this->getController();
         $this->getAction();
+
+        $this->params = array_values($this->params);
     }
 
     /**

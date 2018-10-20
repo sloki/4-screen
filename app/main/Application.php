@@ -88,6 +88,7 @@ class Application
         $this->getController();
         $this->getAction();
 
+
         $this->params = array_values($this->params);
     }
 

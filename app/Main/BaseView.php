@@ -40,7 +40,7 @@ class BaseView
 
     public function escapeHTML($string)
     {
-        return (htmlentities($string, HTMLENTITIES_FLAGS, HTMLENTITIES_ENCODING, HTMLENTITIES_DOUBLE_ENCODE));
+        return htmlentities($string, HTMLENTITIES_FLAGS, HTMLENTITIES_ENCODING, HTMLENTITIES_DOUBLE_ENCODE);
     }
 
     public function getCSS()
@@ -56,7 +56,7 @@ class BaseView
         }
     }
 
-    public function getJS()
+    public function getJS(): string
     {
         return $this->scripts;
     }
@@ -75,6 +75,7 @@ class BaseView
         $this->addData($data);
         $this->getFile(DEFAULT_HEADER_PATH);
         $this->getFile($filePath);
+        $this->getFile(DEFAULT_FOOTER_PATH);
     }
 
     public function renderMultiple(array $filePaths, array $data = [])

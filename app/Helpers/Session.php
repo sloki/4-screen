@@ -27,13 +27,13 @@ class Session
 
     public static function exists($key)
     {
-        return (isset($_SESSION[$key]));
+        return isset($_SESSION[$key]);
     }
 
     public static function get($key)
     {
         if (self::exists($key)) {
-            return ($_SESSION[$key]);
+            return $_SESSION[$key];
         }
     }
 
@@ -47,6 +47,8 @@ class Session
 
     public static function put($key, $value)
     {
-        return ($_SESSION[$key] = $value);
+        $_SESSION[$key] = $value;
+
+        return $value;
     }
 }

@@ -79,17 +79,8 @@ class Application
             $this->params = explode("/", filter_var(rtrim($url, "/"), FILTER_SANITIZE_URL));
         }
 
-        if(empty($this->params[0])) {
-            unset($this->params[0]);
-
-            $this->params = array_values($this->params);
-        }
-
         $this->getController();
         $this->getAction();
-
-
-        $this->params = array_values($this->params);
     }
 
     /**
